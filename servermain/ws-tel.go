@@ -8,12 +8,14 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-var upgrader = websocket.Upgrader{
-	CheckOrigin: func(r *http.Request) bool { return true },
-}
+// var upgrader websocket.Upgrader
 
 // wsMessage handles browser requests to /msg/
 func wsMessage(w http.ResponseWriter, r *http.Request) {
+
+	upgrader := websocket.Upgrader{
+		CheckOrigin: func(r *http.Request) bool { return true },
+	}
 
 	// upgrade to websocket
 	c, err := upgrader.Upgrade(w, r, nil)
