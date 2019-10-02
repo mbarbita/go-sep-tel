@@ -1,12 +1,11 @@
 package servermain
 
 import (
-	"html/template"
 	"log"
 	"net/http"
+	"text/template"
 
 	"github.com/gorilla/context"
-
 	cfgutils "github.com/mbarbita/golib-cfgutils"
 )
 
@@ -22,12 +21,14 @@ func home(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-var cfgMap = cfgutils.ReadCfgFile("cfg.ini", false)
-
-var telMap = cfgutils.ReadCfgFile(cfgMap["tel"], false)
-var htmlTmpl = template.Must(template.ParseGlob("templates/*.*"))
+var cfgMap, telMap map[string]string
+var htmlTmpl *template.Template
 
 func Main() {
+
+	cfgMap = cfgutils.ReadCfgFile("cfg.ini", false)
+	telMap = cfgutils.ReadCfgFile(cfgMap["tel"], false)
+	htmlTmpl = template.Must(template.ParseGlob("templates/*.*"))
 
 	http.HandleFunc("/", home)
 	http.HandleFunc("/msg", wsMessage)
