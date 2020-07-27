@@ -52,7 +52,9 @@ func wsMessage(w http.ResponseWriter, r *http.Request) {
 				// log.Println(req, k, v, response)
 			}
 		}
-
+		if response == "" {
+			response = "No Results"
+		}
 		// mesage type = 1
 		err = c.WriteMessage(1, []byte(response))
 		if err != nil {
