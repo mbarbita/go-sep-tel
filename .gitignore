@@ -13,3 +13,11 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+tel-server-linux-386
+
+tel-server-linux-amd64
+
+tel-server-windows-386.exe
+
+tel-server-windows-amd64.exe
