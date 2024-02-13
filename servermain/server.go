@@ -6,7 +6,7 @@ import (
 	"text/template"
 
 	"github.com/gorilla/context"
-	cfgutils "github.com/mbarbita/golib-cfgutils"
+	cfgutils "github.com/mbarbita/go-cfgutils"
 )
 
 func home(w http.ResponseWriter, r *http.Request) {
